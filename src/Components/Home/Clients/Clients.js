@@ -8,21 +8,21 @@ import airbnb from '../../../creative-agency/images/logos/airbnb.png'
 import './Clients.css'
 const Clients = () => {
     return (
-        <div className="d-flex justify-content-center" style={{marginTop: "4rem"}}>
-            <div className="row w-75 d-flex  align-items-center">
-                    <div className="col-md-2 mr-4">
+        <div className="" style={{marginTop: "4rem"}}>
+            <div className="row  d-flex  align-items-center justify-content-center" style={{marginRight: "0px",marginLeft: "0px"}}>
+                    <div className="col-md-2 col-sm-3 col-4">
                         <img src={slack} className="clientsIcon1"  alt=""/>
                     </div>
-                    <div className="col-md-2 mr-4">
+                    <div className="col-md-2 col-sm-3 col-4">
                         <img src={google} className="clientsIcon2" alt=""/>
                     </div>
-                    <div className="col-md-2 mr-4">
+                    <div className="col-md-2 col-sm-3 col-4">
                         <img src={uber} className="clientsIcon3" alt=""/>
                     </div>
-                    <div className="col-md-2 mr-4">
+                    <div className="col-md-2 col-sm-3 col-4">
                         <img src={netflix} className="clientsIcon4" alt=""/>
                     </div>
-                    <div className="col-md-2">
+                    <div className="col-md-2 col-sm-3 col-4">
                         <img src={airbnb} className="clientsIcon5" alt=""/>
                     </div>
             </div>

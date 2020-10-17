@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const MakeAdmin = ({loggedInUser}) => {
 
     const [makeAdmin, setMakeAdmin] = useState({});
-
+    const [successMessage, setSuccessMessage] = useState(false);
     const handleBlur = e => {
         const newAdmin = { ...makeAdmin };
         newAdmin[e.target.name] = e.target.value;
@@ -12,13 +12,13 @@ const MakeAdmin = ({loggedInUser}) => {
 
     const handleAdminMake =(e)=> {
         fetch('https://calm-wave-24035.herokuapp.com/makeAdmin', {
-         method: "POSST",
+         method: "POST",
         headers: { 'content-type': 'application/json'},
         body: JSON.stringify(makeAdmin)
     })
             .then(response => response.json())
             .then(data => {
-                console.log(data)           
+                setSuccessMessage(data);           
             })
             .catch(error => {
                 console.error(error)
@@ -34,6 +34,11 @@ const MakeAdmin = ({loggedInUser}) => {
                     <h4> {loggedInUser.name} </h4>
                 </div>
                 <div className="col-md-12" style={{backgroundColor: "rgb(215, 240, 243)"}}>
+                <div className="text-center text-success">
+                        {
+                            successMessage && <h4>Your Have Been make New Admin SuccessFully </h4>
+                        }
+                    </div>
                     <div className="col-md-6 py-5">
                         <form onSubmit={handleAdminMake}>
                         

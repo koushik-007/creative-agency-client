@@ -11,17 +11,16 @@ import Sidebar from '../Sidebar/Sidebar';
 
 const Dashboard = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
-    const [isAdmin, setIsAdmin] = useState([])
+    const [isAdmin, setIsAdmin] = useState(null)
     useEffect(()=>{
         fetch('https://calm-wave-24035.herokuapp.com/isAdmin',{
-            method: "POSST",
+            method: "POST",
             headers: { 'content-type': 'application/json'},
             body: JSON.stringify({email: loggedInUser.email})
         })
         .then(res=> res.json())
         .then(data=> setIsAdmin(data))
     },[])
-    
     const [order, setOrder] = useState(true);
     const [serviceList, setServiceList] = useState(false);
     const [review, setReview] = useState(false);
@@ -46,6 +45,7 @@ const Dashboard = () => {
         const [adminServiceList, setAdminServiceList] = useState(true);
         const [addService, setAddService] = useState(false);
         const [makeAdmin, setMakeAdmin] = useState(false);
+
         const handleAdmin = (e) => {
             if (e.target.innerText === "Service List") {
                 setAdminServiceList(true);
@@ -67,12 +67,12 @@ const Dashboard = () => {
     return (
         <section>
             <div className="row" style={{margin: "0"}}>
-                <div className="col-md-3">
+                <div className="col-md-3 col-sm-4 col-12">
                     <Sidebar handleClient={handleClient} handleAdmin={handleAdmin} isAdmin={isAdmin}></Sidebar>
                 </div>
                 {
                     isAdmin ? 
-                    <div className="col-md-9">
+                    <div className="col-md-9 col-sm-8">
                     {
                         adminServiceList && <AdminServiceList loggedInUser={loggedInUser}></AdminServiceList>
                     }
@@ -84,7 +84,7 @@ const Dashboard = () => {
                     }
                     </div>
                     :
-                <div className="col-md-9">
+                <div className="col-md-9 col-sm-8">
                     {
                         order && <Order loggedInUser={loggedInUser}></Order>
                     }

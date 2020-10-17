@@ -23,7 +23,12 @@ const ServiceList = ({loggedInUser}) => {
             <div className="col-md-12"  style={{backgroundColor: "rgb(215, 240, 243)"}}>
                 <div className="row px-3">
                    {
+                       clientData.length > 0 ?
                        clientData.map(data =>  <ServiceListDetails data={data}></ServiceListDetails>)
+                       :
+                       <div class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                        </div>
                    }
             </div>
             </div>

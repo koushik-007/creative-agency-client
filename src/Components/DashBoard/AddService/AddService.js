@@ -17,8 +17,9 @@ const AddService = ({loggedInUser}) => {
     }
 
     const handleAddService = (e) => {
+        
         const formData = new FormData()
-        console.log(addService);
+        
         formData.append('file', file);
         formData.append('serviceTitle', addService.serviceTitle);
         formData.append('description', addService.description);

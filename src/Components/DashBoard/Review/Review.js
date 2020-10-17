@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Review = ({loggedInUser}) => {
 
     const [review, setReview] = useState({});
-
+    const [reviewSuccess, setReviewSuccess] = useState(false);
     const handleBlur = e => {
         const newReview = { ...review };
         newReview[e.target.name] = e.target.value;
@@ -24,7 +24,7 @@ const Review = ({loggedInUser}) => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                setReviewSuccess(data);
             })
             .catch(error => {
                 console.error(error)
@@ -39,6 +39,11 @@ const Review = ({loggedInUser}) => {
                 <h4> {loggedInUser.name} </h4>
             </div>
             <div className="col-md-12" style={{backgroundColor: "rgb(215, 240, 243)"}}>
+            <div className="text-center text-success">
+                        {
+                            reviewSuccess && <h4>Your Review Have Been Submitted , Please Go Home List To See Your Review </h4>
+                        }
+                    </div>
                 <div className="col-md-6 py-5">
                     <form onSubmit={handleReview}>
                     <div className="form-group">

@@ -5,7 +5,7 @@ const Order = ({loggedInUser}) => {
 
     const [orderInfo, setOrderInfo] = useState({});
     const [file, setFile] = useState(null);
-
+    const [successMessage, setSuccessMesaage] = useState(false);
     const handleBlur = e => {
         const newInfo = { ...orderInfo };
         newInfo[e.target.name] = e.target.value;
@@ -19,7 +19,6 @@ const Order = ({loggedInUser}) => {
 
     const handleOrder = (e) => {
         const formData = new FormData()
-        console.log(orderInfo);
         formData.append('file', file);
         formData.append('name', orderInfo.name);
         formData.append('email', orderInfo.email);
@@ -34,7 +33,7 @@ const Order = ({loggedInUser}) => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                setSuccessMesaage(data);
             })
             .catch(error => {
                 console.error(error)
@@ -50,6 +49,11 @@ const Order = ({loggedInUser}) => {
                     <h4> {loggedInUser.name} </h4>
                 </div>
                 <div className="col-md-12" style={{backgroundColor: "rgb(215, 240, 243)"}}>
+                    <div className="text-center text-success">
+                        {
+                            successMessage && <h4>Your Order Have Been Submitted , Please Click Service List To See Your Order Info  </h4>
+                        }
+                    </div>
                     <div className="col-md-6 py-5">
                         <form onSubmit={handleOrder}>
                         <div className="form-group">

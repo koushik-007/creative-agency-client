@@ -14,7 +14,7 @@ const FeedBacks = () => {
         .then(res => res.json())
         .then(data => setFeedBacks(data));
     },[])
-
+    console.log(feedBacks)
     return (
        <section className="feedBacks my-5 mt-5 mb-5">
            <div className="container">
@@ -22,9 +22,11 @@ const FeedBacks = () => {
                     <h3>Clients <span style={{color: "#7AB259"}}>Feedback</span></h3>
                </div>
                <div className="card-deck mt-5 mb-5">
+                   <div className="row">
                     {
                         feedBacks.map(review => <FeedBackDetails review={review} key={review._id}/>)
                     }
+                    </div>
                </div>
            </div>
        </section>

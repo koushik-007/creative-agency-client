@@ -27,13 +27,10 @@ function App() {
              <Login></Login>
           </Route>
 
-          {/* <PrivateRoute path="/dashBoard">
+          <PrivateRoute path="/dashBoard">
              <DashBoard></DashBoard>
-          </PrivateRoute> */}
+          </PrivateRoute>
 
-          <Route path="/dashBoard">
-             <DashBoard></DashBoard>
-          </Route>
 
         </Switch>
       </Router>
